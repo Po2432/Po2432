@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modrinth Departure Notice - Po2432</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header will be injected here -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        <h1>Modrinth Departure Notice</h1>
+        
+        <div class="notice-box">
+            <p><strong>Effective Immediately:</strong> My mods will no longer be published or updated on Modrinth.</p>
+        </div>
+
+        <h3>Why am I leaving Modrinth?</h3>
+        <p>Due to the recent acquisition of Modrinth by Spark Universe, I have made the decision to cease all publishing on the platform. I will no longer be supporting Modrinth as a host for my projects.</p>
+
+        <h3>Where can you find my mods now?</h3>
+        <p>All active development, future updates, and new projects will be exclusively available on my CurseForge profile.</p>
+        <p>
+            <a href="https://www.curseforge.com/members/po2432/projects" target="_blank">
+                <img src="https://raw.githubusercontent.com/intergrav/devins-badges/0a3449fd26bf1375d2c5c26f096c8f30aa358766/assets/cozy/available/curseforge_vector.svg" alt="Available on CurseForge" style="height: 40px; margin-top: 10px;">
+            </a>
+        </p>
+
+        <h3>What happens to existing Modrinth projects and Modpacks?</h3>
+        <p>
+            To ensure a smooth transition for the community, <strong>my projects on Modrinth will be archived, not deleted.</strong>
+        </p>
+        <ul>
+            <li><strong>Modpacks will not break:</strong> If you are currently using my mods in a modpack via Modrinth, everything will continue to work normally.</li>
+            <li><strong>Current downloads:</strong> Existing versions will remain available for download.</li>
+            <li><strong>No new updates:</strong> Even if a project does not appear fully "archived" immediately, absolutely <em>no new versions</em> will be released on Modrinth.</li>
+        </ul>
+        
+        <p>Thank you for understanding and supporting my work. I look forward to seeing you over on CurseForge!</p>
+    </main>
+
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Script to load header and footer -->
+    <script>
+        async function loadPartials() {
+            try {
+                const headerRes = await fetch('header.html');
+                document.getElementById('header-placeholder').innerHTML = await headerRes.text();
+                
+                const footerRes = await fetch('footer.html');
+                document.getElementById('footer-placeholder').innerHTML = await footerRes.text();
+            } catch (error) {
+                console.error("Error loading partials. Note: Fetch API requires a local server.", error);
+            }
+        }
+        loadPartials();
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Po2432 - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include Marked.js to parse the README markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <!-- Header will be injected here -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        <!-- The dynamically fetched README will populate here -->
+        <div id="readme-content">
+            <p>Loading profile information...</p>
+        </div>
+    </main>
+
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        async function loadSite() {
+            try {
+                // Load Header
+                const headerRes = await fetch('header.html');
+                document.getElementById('header-placeholder').innerHTML = await headerRes.text();
+                
+                // Load Footer
+                const footerRes = await fetch('footer.html');
+                document.getElementById('footer-placeholder').innerHTML = await footerRes.text();
+
+                // Load and parse GitHub README.md
+                const readmeUrl = 'https://raw.githubusercontent.com/Po2432/Po2432/ad79779937b1939ee937bed8845efee17adc7637/README.md';
+                const readmeRes = await fetch(readmeUrl);
+                const readmeText = await readmeRes.text();
+                
+                // Convert Markdown to HTML
+                document.getElementById('readme-content').innerHTML = marked.parse(readmeText);
+                
+            } catch (error) {
+                console.error("Error loading site resources. Ensure you are viewing this via a local server or web host.", error);
+                document.getElementById('readme-content').innerHTML = "<p>Failed to load profile data.</p>";
+            }
+        }
+        
+        loadSite();
+    </script>
+</body>
+</html>

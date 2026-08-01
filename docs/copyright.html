@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyright Log - Po2432</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header will be injected here -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        <h1>Copyright Infringement Log</h1>
+        <p>The following websites have unlawfully distributed my mods. I actively track and issue DMCA takedowns against these unauthorized distributors to protect my work and users.</p>
+        
+        <table class="copyright-table">
+            <thead>
+                <tr>
+                    <th>Mod</th>
+                    <th>Distributor</th>
+                    <th>Link (Warning)</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="copyright-data">
+                <tr><td colspan="4">Loading data...</td></tr>
+            </tbody>
+        </table>
+    </main>
+
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        async function loadCopyrightPage() {
+            try {
+                const headerRes = await fetch('header.html');
+                document.getElementById('header-placeholder').innerHTML = await headerRes.text();
+                
+                const footerRes = await fetch('footer.html');
+                document.getElementById('footer-placeholder').innerHTML = await footerRes.text();
+
+                // Fetch JSON data
+                const copyrightRes = await fetch('copyright.json');
+                const data = await copyrightRes.json();
+
+                const tbody = document.getElementById('copyright-data');
+                tbody.innerHTML = ''; // Clear loading text
+
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    
+                    // Determine CSS class based on status text for color coding
+                    let statusClass = "status-waiting";
+                    let statusText = item.status.toLowerCase();
+                    if (statusText.includes("shutdown")) {
+                        statusClass = "status-shutdown";
+                    } else if (statusText.includes("final") || statusText.includes("action")) {
+                        statusClass = "status-warning";
+                    }
+
+                    row.innerHTML = `
+                        <td>${item.mod}</td>
+                        <td><strong>${item.distributor}</strong></td>
+                        <td><a href="${item.url}" target="_blank" rel="nofollow noopener noreferrer" style="word-break: break-all;">Link</a></td>
+                        <td class="${statusClass}">${item.status}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+            } catch (error) {
+                console.error("Error loading resources.", error);
+                document.getElementById('copyright-data').innerHTML = `<tr><td colspan="4">Failed to load data. Ensure you are running a local server.</td></tr>`;
+            }
+        }
+        
+        loadCopyrightPage();
+    </script>
+</body>
+</html>

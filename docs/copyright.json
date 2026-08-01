@@ -1,0 +1,56 @@
+[
+  {
+    "mod": "Evacuate",
+    "distributor": "SodaMC",
+    "url": "https://sodamc.com/129004-28040201.html",
+    "status": "Shutdown"
+  },
+  {
+    "mod": "Evacuate",
+    "distributor": "Minecraft Flow",
+    "url": "https://minecraft-flow.ru/mods/evacuate%21",
+    "status": "Shutdown"
+  },
+  {
+    "mod": "Evacuate",
+    "distributor": "MetaMods",
+    "url": "https://metamods.net/en/mods/evacuate!",
+    "status": "FINAL NOTICE - Awaiting Reply"
+  },
+  {
+    "mod": "Evacuate",
+    "distributor": "KLauncher",
+    "url": "https://klauncher.gg/en/minecraft/mods/evacuate",
+    "status": "Waiting - Under Investigation"
+  },
+  {
+    "mod": "Evacuate",
+    "distributor": "MCLauncher",
+    "url": "https://mclauncher.ru/mod/evacuate",
+    "status": "Waiting - Under Investigation"
+  },
+  {
+    "mod": "Evacuate",
+    "distributor": "Modrinth Proxy",
+    "url": "https://modrinth.black/mod/evacuate!?_cr=1783010334036",
+    "status": "Waiting - Under Investigation"
+  },
+  {
+    "mod": "Evacuate",
+    "distributor": "ZonaCraft",
+    "url": "https://zonacraft.ru/mc-mods/evacuate/",
+    "status": "Waiting - Under Investigation"
+  },
+  {
+    "mod": "Evacuate",
+    "distributor": "TLMods",
+    "url": "https://tlmods.org/en/mods/evacuate/",
+    "status": "Action Initiated"
+  },
+  {
+    "mod": "Evacuate",
+    "distributor": "ModDex",
+    "url": "https://moddex.gg/mod/evacuate#files",
+    "status": "Pending Report"
+  }
+]

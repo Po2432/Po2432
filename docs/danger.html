@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dangerous Mods & Servers - Po2432</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Disclaimer Modal Overlay -->
+    <div id="disclaimer-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>⚠️ Legal & Liability Disclaimer</h2>
+            <p><strong>Please read carefully before proceeding.</strong></p>
+            <p>The information provided on this page regarding dangerous Minecraft mods, servers, or projects is strictly for <strong>informational purposes</strong> and is provided on a <strong>voluntary basis</strong> to help protect the community.</p>
+            <p><strong>Liability Disclaimer:</strong> Po2432 assumes no liability or responsibility for any actions taken based on this list, nor for any damages, direct or indirect, resulting from the use or inability to use this information.</p>
+            <p><strong>Dispute Process:</strong> If you are the owner of a mod, server, or project listed here and believe the information is incorrect, you must open an issue on our GitHub repository describing your complaint here: <br><br>
+            <a href="https://github.com/Po2432/Po2432/issues" target="_blank" style="font-weight:bold;">https://github.com/Po2432/Po2432/issues</a></p>
+            <p>We must be notified to resolve the matter directly <strong>before</strong> any reports are made to GitHub regarding this page's information. <em>Note: Only requests from the verified owner of the listed property will be processed.</em></p>
+            <button class="modal-btn" onclick="acceptDisclaimer()">I Accept and Understand</button>
+        </div>
+    </div>
+
+    <!-- Header will be injected here -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        <!-- Main List View -->
+        <div id="list-view">
+            <h1>Dangerous Mods & Servers</h1>
+            <p>Below is a list of known malicious or dangerous entities in the community. Click on any item to view more details.</p>
+            <div class="danger-grid" id="danger-grid">
+                <p>Loading data...</p>
+            </div>
+        </div>
+
+        <!-- Detail View (Hidden by default) -->
+        <div id="detail-view" style="display: none;">
+            <a href="#list" class="btn-back">← Back to List</a>
+            <h1 id="detail-title">Loading...</h1>
+            <div id="detail-badges"></div>
+            
+            <div class="detail-section">
+                <h3>Reason for Listing</h3>
+                <p id="detail-reason"></p>
+            </div>
+            
+            <div class="detail-section">
+                <h3>Evidence / Notes</h3>
+                <p id="detail-evidence"></p>
+            </div>
+            
+            <p style="margin-top:20px; color:#888;">Date Added: <span id="detail-date"></span></p>
+        </div>
+    </main>
+
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        let dangerData = [];
+
+        // Handle Disclaimer Check
+        function checkDisclaimer() {
+            if (!sessionStorage.getItem('dangerDisclaimerAccepted')) {
+                document.getElementById('disclaimer-modal').style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            } else {
+                document.getElementById('disclaimer-modal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function acceptDisclaimer() {
+            sessionStorage.setItem('dangerDisclaimerAccepted', 'true');
+            checkDisclaimer();
+        }
+
+        // Load the page layout and data
+        async function loadDangerPage() {
+            try {
+                // Inject Partials
+                const headerRes = await fetch('header.html');
+                document.getElementById('header-placeholder').innerHTML = await headerRes.text();
+                
+                const footerRes = await fetch('footer.html');
+                document.getElementById('footer-placeholder').innerHTML = await footerRes.text();
+
+                // Fetch JSON data
+                const res = await fetch('danger.json');
+                dangerData = await res.json();
+
+                // Render based on current URL Hash
+                handleRouting();
+
+            } catch (error) {
+                console.error("Error loading resources.", error);
+                document.getElementById('danger-grid').innerHTML = "<p>Failed to load data. Ensure you are running a local server.</p>";
+            }
+        }
+
+        // Handle the routing (List vs Detail based on #id)
+        function handleRouting() {
+            const hash = window.location.hash.substring(1); // Remove the '#'
+
+            if (hash === '' || hash === 'list') {
+                showListView();
+            } else {
+                showDetailView(hash);
+            }
+        }
+
+        function showListView() {
+            document.getElementById('detail-view').style.display = 'none';
+            document.getElementById('list-view').style.display = 'block';
+
+            const grid = document.getElementById('danger-grid');
+            grid.innerHTML = '';
+
+            dangerData.forEach(item => {
+                const card = document.createElement('a');
+                card.href = `#${item.id}`;
+                card.className = 'danger-card';
+                card.style.textDecoration = 'none'; // Overriding default a styles
+                
+                // Determine Badge Class
+                const typeBadgeClass = item.type.toLowerCase() === 'mod' ? 'badge-mod' : 'badge-server';
+                const severityBadgeClass = `badge-${item.severity.toLowerCase()}`;
+
+                card.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <span class="badge ${typeBadgeClass}">${item.type}</span>
+                    <span class="badge ${severityBadgeClass}">${item.severity} Risk</span>
+                    <p style="color: #ccc; font-size: 0.9rem; margin-top: 10px;">
+                        ${item.reason.substring(0, 80)}${item.reason.length > 80 ? '...' : ''}
+                    </p>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function showDetailView(id) {
+            const item = dangerData.find(d => d.id === id);
+            
+            if (!item) {
+                // If ID is invalid, return to list
+                window.location.hash = '#list';
+                return;
+            }
+
+            document.getElementById('list-view').style.display = 'none';
+            document.getElementById('detail-view').style.display = 'block';
+
+            document.getElementById('detail-title').innerText = item.name;
+            
+            const typeBadgeClass = item.type.toLowerCase() === 'mod' ? 'badge-mod' : 'badge-server';
+            const severityBadgeClass = `badge-${item.severity.toLowerCase()}`;
+            
+            document.getElementById('detail-badges').innerHTML = `
+                <span class="badge ${typeBadgeClass}">${item.type}</span>
+                <span class="badge ${severityBadgeClass}">${item.severity} Risk</span>
+            `;
+
+            document.getElementById('detail-reason').innerText = item.reason;
+            document.getElementById('detail-evidence').innerText = item.evidence || "No specific evidence details provided.";
+            document.getElementById('detail-date').innerText = item.dateAdded;
+            
+            window.scrollTo(0, 0); // Scroll to top of detail view
+        }
+
+        // Listen for hash changes to dynamically swap content without reloading
+        window.addEventListener('hashchange', handleRouting);
+
+        // Run Checks and Loading on Page Start
+        checkDisclaimer();
+        loadDangerPage();
+    </script>
+</body>
+</html>

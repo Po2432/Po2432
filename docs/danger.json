@@ -1,0 +1,20 @@
+[
+  {
+    "id": "su-essential",
+    "name": "Essential Mod - By SparkUniverse",
+    "type": "Mod",
+    "severity": "High",
+    "reason": "Closed source. Questionable privacy policies, and terms of service. Violates EULA by selling ingame cosmetics. It downloads other mods secretly.",
+    "dateAdded": "2026-06-08",
+    "evidence": "Closed source. Questionable privacy policies, and terms of service. Violates EULA by selling ingame cosmetics."
+  },
+  {
+    "id": "hypixel",
+    "name": "Hypixel",
+    "type": "Server",
+    "severity": "High",
+    "reason": "Uses a mod coded by SparkUniverse which uses the same questionable privacy policy. The chat system allow administrators to see your private chats even if you use private messaging. It forcefully downloads Essential Mod.",
+    "dateAdded": "2026-06-08",
+    "evidence": ""
+  }
+]

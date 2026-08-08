@@ -9,14 +9,17 @@
     --danger-red: #f44336;
     
     /* Protest Theme Variables */
-    --protest-black: #050505;
+    --protest-black: #080808;
     --protest-red: #d90000;
+    --protest-dark-red: #8b0000;
     --protest-white: #ffffff;
+    --protest-gray: #1a1a1a;
+    --protest-border: #333333;
 }
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -115,140 +118,47 @@ a:hover {
     border-radius: 0 4px 4px 0;
 }
 
-/* Table Styles */
-.copyright-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 0.95rem;
-}
-
-.copyright-table th, .copyright-table td {
-    border: 1px solid #333;
-    padding: 12px;
-    text-align: left;
-}
-
-.copyright-table th { background-color: #2a2a2a; color: var(--accent); }
-.copyright-table tr:nth-child(even) { background-color: #1a1a1a; }
-.status-shutdown { color: #4caf50; font-weight: bold; }
-.status-warning { color: #ff9800; font-weight: bold; }
-.status-waiting { color: #f44336; font-weight: bold; }
-
-/* Modal and Danger Pages */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    backdrop-filter: blur(5px);
-}
-
-.modal-content {
-    background: #1e1e1e;
-    padding: 30px;
-    border-radius: 8px;
-    max-width: 600px;
-    width: 90%;
-    border: 1px solid #444;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    border-top: 5px solid var(--danger-red);
-}
-
-.modal-content h2 { margin-top: 0; color: var(--danger-red); }
-.modal-content p { font-size: 0.95rem; color: #ccc; }
-
-.modal-btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin-top: 20px;
-    background-color: var(--danger-red);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-.modal-btn:hover { background-color: #d32f2f; }
-
-.danger-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.danger-card {
-    background: #2a2a2a;
-    padding: 20px;
-    border-radius: 6px;
-    border: 1px solid #333;
-    transition: transform 0.2s, border-color 0.2s;
-    cursor: pointer;
-}
-
-.danger-card:hover { transform: translateY(-5px); border-color: var(--danger-red); }
-.danger-card h3 { margin: 0 0 10px 0; color: var(--text-color); }
-
-.badge { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 0.8rem; font-weight: bold; margin-right: 5px; margin-bottom: 10px; }
-.badge-mod { background: #3f51b5; color: white; }
-.badge-server { background: #009688; color: white; }
-.badge-critical { background: #d32f2f; color: white; }
-.badge-high { background: #ff9800; color: white; }
-.badge-medium { background: #ffeb3b; color: black; }
-
-.btn-back { display: inline-block; padding: 8px 15px; background: #333; color: white; border-radius: 4px; margin-bottom: 20px; }
-.btn-back:hover { background: #444; text-decoration: none; }
-.detail-section { background: #2a2a2a; padding: 20px; border-radius: 6px; margin-top: 15px; border-left: 4px solid var(--danger-red); }
-
 /* =========================================
    PROTEST PAGE STYLES (MODDEX.GG)
    ========================================= */
 
 .protest-container {
-    max-width: 900px;
+    max-width: 950px;
     margin: 40px auto;
     background-color: var(--protest-black);
-    border: 4px solid var(--protest-red);
-    box-shadow: 0 0 20px rgba(217, 0, 0, 0.3);
+    border: 3px solid var(--protest-red);
+    box-shadow: 0 0 30px rgba(217, 0, 0, 0.25);
     color: var(--protest-white);
     padding: 0;
 }
 
 .protest-hero {
     text-align: center;
-    padding: 60px 20px;
-    background: repeating-linear-gradient(
-        45deg,
-        #111,
-        #111 10px,
-        #000 10px,
-        #000 20px
-    );
-    border-bottom: 4px solid var(--protest-red);
+    padding: 60px 25px;
+    background: repeating-linear-gradient(135deg, #0d0d0d, #0d0d0d 12px, #000000 12px, #000000 24px);
+    border-bottom: 3px solid var(--protest-red);
+    position: relative;
 }
 
 .protest-hero h1 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     font-weight: 900;
-    margin: 0 0 10px 0;
+    margin: 15px 0 10px 0;
     text-transform: uppercase;
-    color: var(--protest-red);
-    text-shadow: 2px 2px 0 #fff;
+    color: var(--protest-white);
     letter-spacing: 2px;
 }
 
+.protest-hero h1 span {
+    color: var(--protest-red);
+}
+
 .protest-hero p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 25px auto;
-    font-weight: bold;
+    font-size: 1.15rem;
+    max-width: 750px;
+    margin: 0 auto 30px auto;
+    color: #cccccc;
+    line-height: 1.7;
 }
 
 .protest-cta-btn {
@@ -257,101 +167,130 @@ a:hover {
     gap: 10px;
     background-color: var(--protest-red);
     color: var(--protest-white) !important;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-weight: 900;
+    padding: 14px 32px;
+    font-size: 1.1rem;
+    font-weight: 800;
     text-transform: uppercase;
-    border: 2px solid var(--protest-white);
-    transition: all 0.3s ease;
-    animation: pulseRed 2s infinite;
+    letter-spacing: 1px;
+    border: 1px solid var(--protest-white);
+    transition: all 0.2s ease;
 }
 
 .protest-cta-btn:hover {
     background-color: var(--protest-white);
-    color: var(--protest-red) !important;
-    border-color: var(--protest-red);
-    animation: none;
+    color: var(--protest-black) !important;
     text-decoration: none;
 }
 
-@keyframes pulseRed {
-    0% { box-shadow: 0 0 0 0 rgba(217, 0, 0, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(217, 0, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(217, 0, 0, 0); }
-}
-
 .protest-section {
-    padding: 40px;
-    border-bottom: 2px dashed #333;
+    padding: 45px 40px;
+    border-bottom: 1px solid var(--protest-border);
 }
 
 .protest-section h2 {
-    color: var(--protest-red);
-    font-size: 2rem;
+    color: var(--protest-white);
+    font-size: 1.8rem;
     text-transform: uppercase;
-    border-left: 8px solid var(--protest-red);
+    letter-spacing: 1px;
+    border-left: 6px solid var(--protest-red);
     padding-left: 15px;
     margin-top: 0;
+    margin-bottom: 25px;
 }
 
-.protest-fact-box {
-    background: #1a0000;
-    border: 2px solid var(--protest-red);
-    padding: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 30px;
+.protest-card {
+    background: var(--protest-gray);
+    border: 1px solid var(--protest-border);
+    border-top: 3px solid var(--protest-red);
+    padding: 25px;
+    margin-bottom: 20px;
 }
 
-.protest-list {
-    list-style: none;
-    padding: 0;
+.protest-card h3 {
+    margin-top: 0;
+    color: var(--protest-white);
+    font-size: 1.3rem;
 }
 
-.protest-list li {
-    background: #111;
-    margin-bottom: 15px;
-    padding: 20px;
-    border-left: 4px solid var(--protest-red);
-    font-size: 1.1rem;
-    display: flex;
-    gap: 15px;
-    align-items: flex-start;
+.protest-card p {
+    color: #bbbbbb;
+    margin-bottom: 0;
 }
 
-.warning-banner {
-    background: repeating-linear-gradient(45deg, #ffeb3b, #ffeb3b 10px, #000 10px, #000 20px);
-    padding: 5px;
+/* Statistics Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
     margin: 30px 0;
 }
 
-.warning-banner-inner {
-    background: #000;
-    color: #ffeb3b;
+.stat-box {
+    background: var(--protest-gray);
+    border: 1px solid var(--protest-border);
     padding: 20px;
     text-align: center;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-transform: uppercase;
 }
 
-/* Share Block & Icons */
-.share-block {
-    background: #111;
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--protest-red);
+    font-family: monospace;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #888888;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* Badge Generator Box */
+.badge-container-box {
+    background: #111111;
+    border: 1px solid var(--protest-border);
     padding: 25px;
-    border: 1px solid #333;
-    margin-top: 20px;
+    margin-top: 25px;
+}
+
+.badge-preview-wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.code-snippet {
+    background: #000000;
+    border: 1px solid #333333;
+    color: #00ff66;
+    padding: 12px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Share Section */
+.share-block {
+    background: var(--protest-gray);
+    padding: 25px;
+    border: 1px solid var(--protest-border);
 }
 
 .share-text-box {
-    background: #000;
-    color: #0f0; /* Terminal green for text to copy */
+    background: #000000;
+    color: #dddddd;
     padding: 15px;
     font-family: monospace;
-    font-size: 1rem;
+    font-size: 0.9rem;
     white-space: pre-wrap;
-    border: 1px solid #333;
+    border: 1px solid #333333;
     margin-bottom: 20px;
 }
 
@@ -363,7 +302,7 @@ a:hover {
 
 .share-btn {
     flex: 1;
-    min-width: 140px;
+    min-width: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -371,6 +310,7 @@ a:hover {
     padding: 12px;
     font-weight: bold;
     text-transform: uppercase;
+    font-size: 0.85rem;
     cursor: pointer;
     border: none;
     color: white;
@@ -378,16 +318,41 @@ a:hover {
 }
 
 .share-btn img, .share-btn svg {
-    height: 1.2rem;
+    height: 1.1rem;
     width: auto;
-    fill: currentColor;
 }
 
-.share-btn:hover { opacity: 0.8; }
-.btn-copy { background: #555; }
-.btn-x { background: #000; border: 1px solid #333; }
+.share-btn:hover { opacity: 0.85; }
+.btn-copy { background: #444444; }
+.btn-x { background: #000000; border: 1px solid #333333; }
 .btn-reddit { background: #ff4500; }
-.btn-native { background: #009688; } 
+.btn-native { background: #009688; }
+
+/* Landing Modal for Badge Visitors */
+.badge-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.badge-modal-content {
+    background: #141414;
+    border: 2px solid var(--protest-red);
+    padding: 35px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 0 25px rgba(217,0,0,0.4);
+}
+
+.badge-modal-content h2 {
+    color: var(--protest-red);
+    margin-top: 0;
+    text-transform: uppercase;
+}
 
 /* Footer */
 footer {

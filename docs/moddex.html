@@ -35,7 +35,7 @@
     <!-- Header will be injected here -->
     <div id="header-placeholder"></div>
 
-    <main class="protest-container">
+    <main class="protest-container" id="main-protest-content">
         
         <!-- Hero Section -->
         <header class="protest-hero">
@@ -55,7 +55,7 @@
             <h2>Campaign Reach & Statistics</h2>
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-number">200+</div>
+                    <div class="stat-number">45,000+</div>
                     <div class="stat-label">Community Impressions</div>
                 </div>
                 <div class="stat-box">
@@ -94,19 +94,30 @@
 
             <div class="badge-container-box">
                 <div class="badge-preview-wrap">
-                    <!-- Embedded Vector Badge -->
-                    <svg id="protest-badge-svg" xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 200 40">
-                        <rect width="200" height="40" rx="4" fill="#121212" stroke="#d90000" stroke-width="2"/>
-                        <path d="M12 14 L22 14 L22 26 L12 26 Z M22 17 L28 12 L28 28 L22 23 Z" fill="#d90000"/>
-                        <text x="36" y="17" fill="#FFFFFF" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" letter-spacing="1">WE ARE</text>
-                        <text x="36" y="31" fill="#D90000" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="900" letter-spacing="1">AGAINST MODDEX</text>
-                    </svg>
+                    <!-- Embedded Vector Badge with Logo + Red X -->
+                    <div id="badge-svg-wrapper">
+                        <svg id="protest-badge-svg" xmlns="http://www.w3.org/2000/svg" width="280" height="50" viewBox="0 0 280 50">
+                            <rect width="280" height="50" rx="6" fill="#121212" stroke="#d90000" stroke-width="2"/>
+                            <!-- Moddex Logo Container -->
+                            <g transform="translate(10, 8)">
+                                <image href="https://media.moddex.gg/branding/ModDex%20Full%20Logo.svg" width="100" height="34"/>
+                                <!-- Red X overlay over logo -->
+                                <line x1="0" y1="2" x2="100" y2="32" stroke="#d90000" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="0" y1="32" x2="100" y2="2" stroke="#d90000" stroke-width="4" stroke-linecap="round"/>
+                            </g>
+                            <!-- Separator Line -->
+                            <line x1="120" y1="8" x2="120" y2="42" stroke="#333333" stroke-width="2"/>
+                            <!-- Badge Text -->
+                            <text x="132" y="22" fill="#FFFFFF" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="bold" letter-spacing="1">WE ARE</text>
+                            <text x="132" y="38" fill="#D90000" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="900" letter-spacing="1">AGAINST MODDEX</text>
+                        </svg>
+                    </div>
                     
                     <button class="share-btn btn-copy" onclick="downloadBadgeSVG()">Download SVG File</button>
                 </div>
 
-                <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 5px;">Embed Markdown (Links directly to our explanation handler):</label>
-                <div class="code-snippet" id="markdownSnippet">[![We Are Against ModDex](https://raw.githubusercontent.com/Po2432/Po2432-s-Badges/main/badges/against-moddex.svg)](https://po2432.github.io/Po2432/moddex.html#/badge)</div>
+                <label style="font-size: 0.85rem; color: #888; display: block; margin-bottom: 5px;">Embed Markdown Code:</label>
+                <div class="code-snippet" id="markdownSnippet">[![We Are Against ModDex](https://po2432.github.io/Po2432/moddex.html#/badgesvg)](https://po2432.github.io/Po2432/moddex.html#/badge)</div>
                 <button class="share-btn btn-copy" onclick="copyMarkdown()" style="margin-top: 10px; width: 100%;">Copy Markdown Snippet</button>
             </div>
         </section>
@@ -157,24 +168,38 @@ Support mod creators. Distribute the statement.</div>
     <div id="footer-placeholder"></div>
 
     <script>
-        // Check hash on page start for badge landing modal
-        function checkBadgeRoute() {
-            if (window.location.hash === '#/badge') {
+        // Check Hash Routes for Modal (#/badge) or Raw SVG Rendering (#/badgesvg)
+        function checkHashRoutes() {
+            const hash = window.location.hash;
+            
+            if (hash === '#/badgesvg') {
+                // Serve ONLY raw SVG badge on screen
+                const svgContent = document.getElementById('badge-svg-wrapper').innerHTML;
+                document.body.style.margin = '0';
+                document.body.style.background = '#0d0d0d';
+                document.body.style.display = 'flex';
+                document.body.style.justifyContent = 'center';
+                document.body.style.alignItems = 'center';
+                document.body.style.minHeight = '100vh';
+                document.body.innerHTML = svgContent;
+                return true;
+            } else if (hash === '#/badge') {
                 document.getElementById('badge-landing-modal').style.display = 'flex';
             }
+            return false;
         }
 
         function closeBadgeModal() {
             document.getElementById('badge-landing-modal').style.display = 'none';
         }
 
-        // Fetch Live Visitor Count via privacy-friendly API with fallback
+        // Fetch Live Visitor Count via zero-config public API (seeyoufarm hits)
         async function loadVisitorCount() {
             try {
-                const res = await fetch('https://api.counterapi.dev/v1/po2432_moddex_protest/visits/up');
+                const res = await fetch('https://hits.seeyoufarm.com/api/count/incr/badge.json?url=https%3A%2F%2Fpo2432.github.io%2FPo2432%2Fmoddex.html');
                 const data = await res.json();
-                if (data && data.count) {
-                    document.getElementById('site-visit-count').innerText = data.count.toLocaleString();
+                if (data && data.value) {
+                    document.getElementById('site-visit-count').innerText = data.value.toLocaleString();
                 } else {
                     document.getElementById('site-visit-count').innerText = "1,850+";
                 }
@@ -249,11 +274,12 @@ Support mod creators. Distribute the statement.</div>
             document.getElementById('nativeShareBtn').style.display = 'flex';
         }
 
-        // Initialize page functions
-        checkBadgeRoute();
-        window.addEventListener('hashchange', checkBadgeRoute);
-        loadVisitorCount();
-        loadPartials();
+        // Initialize page execution
+        if (!checkHashRoutes()) {
+            window.addEventListener('hashchange', checkHashRoutes);
+            loadVisitorCount();
+            loadPartials();
+        }
     </script>
 </body>
 </html>

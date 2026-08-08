@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTEST MODDEX.GG - Po2432</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header will be injected here -->
+    <div id="header-placeholder"></div>
+
+    <main class="protest-container">
+        
+        <!-- Hero Section -->
+        <div class="protest-hero">
+            <!-- Bullhorn SVG -->
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--protest-red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
+                <path d="M11 3.5a5.5 5.5 0 0 1 11 0v11a5.5 5.5 0 0 1-11 0V3.5z"/>
+                <path d="M11 9H3a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h8"/>
+                <path d="M16 20.5v-6"/>
+            </svg>
+            
+            <h1>Protest Moddex.gg</h1>
+            <p>We are raising awareness regarding the unacceptable practices of Moddex.gg concerning mod authors and the Minecraft community.</p>
+            <a href="#evidence" class="protest-cta-btn">Read the Evidence</a>
+        </div>
+
+        <!-- Statement & Evidence Section -->
+        <div id="evidence" class="protest-section">
+            <h2>The Concerns & Evidence</h2>
+            <p>Our protest is based entirely on documented facts regarding the platform's current operating model. We are calling for transparency, proper attribution, and fundamental respect for mod creators.</p>
+            
+            <div class="protest-fact-box">
+                📊 Fact: There are nearly 300,000 Minecraft mods currently indexed and listed on Moddex.gg.
+            </div>
+
+            <ul class="protest-list">
+                <li>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--protest-red)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <div>
+                        <strong>Improper Attribution:</strong> 
+                        Widespread instances of improper or entirely missing attribution for the original authors of the mods hosted/listed.
+                    </div>
+                </li>
+                <li>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--protest-red)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <div>
+                        <strong>Listed Without Consent:</strong> 
+                        Mods are being cataloged, listed, and rated by users on the platform without the original authors necessarily being aware their work is even on the site.
+                    </div>
+                </li>
+                <li>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--protest-red)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <div>
+                        <strong>Ignored Community Feedback:</strong> 
+                        User suggestions, bug reports, and feedback directed at mod authors are left sitting on Moddex.gg without responses. This occurs because the authors are completely unaware of the site's existence and cannot see their own users' feedback.
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Protest Instructions -->
+        <div class="protest-section">
+            <h2>How to Support the Protest</h2>
+            <p>The goal of this campaign is to bring these concerns to the attention of mod authors and the wider Minecraft community. You can help by spreading awareness.</p>
+            
+            <div class="warning-banner">
+                <div class="warning-banner-inner">
+                    ⚠️ CRITICAL RULE: DO NOT HARASS ⚠️<br>
+                    <span style="font-size: 0.9rem; font-weight: normal; color: #fff;">
+                        Remain strictly factual. Do not engage in harassment, threats, spam, or personal attacks against anyone associated with Moddex.gg. This undermines the legitimacy of our concerns.
+                    </span>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>Share this page:</strong> Send this page to your favorite mod developers so they can check if their work is listed without their knowledge.</li>
+                <li><strong>Use Social Media:</strong> Post about the situation using the provided text below to inform standard players where they should *actually* be leaving feedback for modders.</li>
+            </ul>
+        </div>
+
+        <!-- Final Call to Action / Share -->
+        <div class="protest-section" style="border-bottom: none;">
+            <h2>Spread the Word</h2>
+            <p>Support mod authors by copying the message below and sharing it on your platforms.</p>
+            
+            <div class="share-block">
+                <div class="share-text-box" id="shareText">🚨 **PROTEST MODDEX.GG**
+
+We’re protesting Moddex.gg over concerns including improper author attribution, mods being listed/rated without authors’ awareness, and unanswered suggestions.
+
+We’re calling for transparency, proper attribution, and respect for mod authors.
+
+📄 Evidence & protest instructions: **po2432.github.io/Po2432/moddex.html**
+
+**Support mod authors. Spread the word.**</div>
+                
+                <div class="share-buttons-grid">
+                    <button class="share-btn btn-copy" onclick="copyText()">
+                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Copy Text
+                    </button>
+                    
+                    <button class="share-btn btn-x" onclick="shareX()">
+                        <img src="https://cdn.simpleicons.org/x/white" alt="X Logo">
+                        Share on X
+                    </button>
+                    
+                    <button class="share-btn btn-reddit" onclick="shareReddit()">
+                        <img src="https://cdn.simpleicons.org/reddit/white" alt="Reddit Logo">
+                        Reddit
+                    </button>
+                    
+                    <button class="share-btn btn-native" onclick="shareNative()" id="nativeShareBtn" style="display: none;">
+                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                        Share App
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load Header and Footer
+        async function loadPartials() {
+            try {
+                const headerRes = await fetch('header.html');
+                document.getElementById('header-placeholder').innerHTML = await headerRes.text();
+                
+                const footerRes = await fetch('footer.html');
+                document.getElementById('footer-placeholder').innerHTML = await footerRes.text();
+            } catch (error) {
+                console.error("Error loading partials.", error);
+            }
+        }
+        loadPartials();
+
+        // Share functionality
+        const rawText = `🚨 **PROTEST MODDEX.GG**\n\nWe’re protesting Moddex.gg over concerns including improper author attribution, mods being listed/rated without authors’ awareness, and unanswered suggestions.\n\nWe’re calling for transparency, proper attribution, and respect for mod authors.\n\n📄 Evidence & protest instructions: **po2432.github.io/Po2432/moddex.html**\n\n**Support mod authors. Spread the word.**`;
+
+        function copyText() {
+            navigator.clipboard.writeText(rawText).then(() => {
+                alert("Protest message copied to clipboard! Thank you for sharing.");
+            }).catch(err => {
+                alert("Failed to copy. Please manually copy the text from the box.");
+            });
+        }
+
+        function shareX() {
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(rawText)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareReddit() {
+            const title = "Protest Moddex.gg: Improper Attribution and Ignored Mod Authors";
+            const url = `https://www.reddit.com/submit?title=${encodeURIComponent(title)}&text=${encodeURIComponent(rawText)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareNative() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Protest Moddex.gg',
+                    text: rawText
+                }).catch(console.error);
+            }
+        }
+
+        // Show native share button only on mobile devices that support Web Share API (e.g. for Instagram, WhatsApp, etc)
+        if (navigator.share) {
+            document.getElementById('nativeShareBtn').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

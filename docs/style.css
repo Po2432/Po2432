@@ -7,6 +7,11 @@
     --accent: #ff9800;
     --link-color: #64b5f6;
     --danger-red: #f44336;
+    
+    /* Protest Theme Variables */
+    --protest-black: #050505;
+    --protest-red: #d90000;
+    --protest-white: #ffffff;
 }
 
 body {
@@ -110,7 +115,7 @@ a:hover {
     border-radius: 0 4px 4px 0;
 }
 
-/* Table Styles for Copyright Page */
+/* Table Styles */
 .copyright-table {
     width: 100%;
     border-collapse: collapse;
@@ -124,17 +129,13 @@ a:hover {
     text-align: left;
 }
 
-.copyright-table th {
-    background-color: #2a2a2a;
-    color: var(--accent);
-}
-
+.copyright-table th { background-color: #2a2a2a; color: var(--accent); }
 .copyright-table tr:nth-child(even) { background-color: #1a1a1a; }
 .status-shutdown { color: #4caf50; font-weight: bold; }
 .status-warning { color: #ff9800; font-weight: bold; }
 .status-waiting { color: #f44336; font-weight: bold; }
 
-/* Disclaimer Modal */
+/* Modal and Danger Pages */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -157,11 +158,7 @@ a:hover {
     border-top: 5px solid var(--danger-red);
 }
 
-.modal-content h2 {
-    margin-top: 0;
-    color: var(--danger-red);
-}
-
+.modal-content h2 { margin-top: 0; color: var(--danger-red); }
 .modal-content p { font-size: 0.95rem; color: #ccc; }
 
 .modal-btn {
@@ -178,10 +175,8 @@ a:hover {
     cursor: pointer;
     transition: background 0.3s;
 }
-
 .modal-btn:hover { background-color: #d32f2f; }
 
-/* Danger List and Detail */
 .danger-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -198,50 +193,201 @@ a:hover {
     cursor: pointer;
 }
 
-.danger-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--danger-red);
-}
+.danger-card:hover { transform: translateY(-5px); border-color: var(--danger-red); }
+.danger-card h3 { margin: 0 0 10px 0; color: var(--text-color); }
 
-.danger-card h3 {
-    margin: 0 0 10px 0;
-    color: var(--text-color);
-}
-
-.badge {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 3px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-right: 5px;
-    margin-bottom: 10px;
-}
-
+.badge { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 0.8rem; font-weight: bold; margin-right: 5px; margin-bottom: 10px; }
 .badge-mod { background: #3f51b5; color: white; }
 .badge-server { background: #009688; color: white; }
 .badge-critical { background: #d32f2f; color: white; }
 .badge-high { background: #ff9800; color: white; }
 .badge-medium { background: #ffeb3b; color: black; }
 
-.btn-back {
-    display: inline-block;
-    padding: 8px 15px;
-    background: #333;
-    color: white;
-    border-radius: 4px;
+.btn-back { display: inline-block; padding: 8px 15px; background: #333; color: white; border-radius: 4px; margin-bottom: 20px; }
+.btn-back:hover { background: #444; text-decoration: none; }
+.detail-section { background: #2a2a2a; padding: 20px; border-radius: 6px; margin-top: 15px; border-left: 4px solid var(--danger-red); }
+
+/* =========================================
+   PROTEST PAGE STYLES (MODDEX.GG)
+   ========================================= */
+
+.protest-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: var(--protest-black);
+    border: 4px solid var(--protest-red);
+    box-shadow: 0 0 20px rgba(217, 0, 0, 0.3);
+    color: var(--protest-white);
+    padding: 0;
+}
+
+.protest-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: repeating-linear-gradient(
+        45deg,
+        #111,
+        #111 10px,
+        #000 10px,
+        #000 20px
+    );
+    border-bottom: 4px solid var(--protest-red);
+}
+
+.protest-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    color: var(--protest-red);
+    text-shadow: 2px 2px 0 #fff;
+    letter-spacing: 2px;
+}
+
+.protest-hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 25px auto;
+    font-weight: bold;
+}
+
+.protest-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--protest-red);
+    color: var(--protest-white) !important;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border: 2px solid var(--protest-white);
+    transition: all 0.3s ease;
+    animation: pulseRed 2s infinite;
+}
+
+.protest-cta-btn:hover {
+    background-color: var(--protest-white);
+    color: var(--protest-red) !important;
+    border-color: var(--protest-red);
+    animation: none;
+    text-decoration: none;
+}
+
+@keyframes pulseRed {
+    0% { box-shadow: 0 0 0 0 rgba(217, 0, 0, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(217, 0, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(217, 0, 0, 0); }
+}
+
+.protest-section {
+    padding: 40px;
+    border-bottom: 2px dashed #333;
+}
+
+.protest-section h2 {
+    color: var(--protest-red);
+    font-size: 2rem;
+    text-transform: uppercase;
+    border-left: 8px solid var(--protest-red);
+    padding-left: 15px;
+    margin-top: 0;
+}
+
+.protest-fact-box {
+    background: #1a0000;
+    border: 2px solid var(--protest-red);
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.protest-list {
+    list-style: none;
+    padding: 0;
+}
+
+.protest-list li {
+    background: #111;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-left: 4px solid var(--protest-red);
+    font-size: 1.1rem;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.warning-banner {
+    background: repeating-linear-gradient(45deg, #ffeb3b, #ffeb3b 10px, #000 10px, #000 20px);
+    padding: 5px;
+    margin: 30px 0;
+}
+
+.warning-banner-inner {
+    background: #000;
+    color: #ffeb3b;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+/* Share Block & Icons */
+.share-block {
+    background: #111;
+    padding: 25px;
+    border: 1px solid #333;
+    margin-top: 20px;
+}
+
+.share-text-box {
+    background: #000;
+    color: #0f0; /* Terminal green for text to copy */
+    padding: 15px;
+    font-family: monospace;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    border: 1px solid #333;
     margin-bottom: 20px;
 }
 
-.btn-back:hover { background: #444; text-decoration: none; }
-
-.detail-section {
-    background: #2a2a2a;
-    padding: 20px;
-    border-radius: 6px;
-    margin-top: 15px;
-    border-left: 4px solid var(--danger-red);
+.share-buttons-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
+
+.share-btn {
+    flex: 1;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: opacity 0.2s;
+}
+
+.share-btn img, .share-btn svg {
+    height: 1.2rem;
+    width: auto;
+    fill: currentColor;
+}
+
+.share-btn:hover { opacity: 0.8; }
+.btn-copy { background: #555; }
+.btn-x { background: #000; border: 1px solid #333; }
+.btn-reddit { background: #ff4500; }
+.btn-native { background: #009688; } 
 
 /* Footer */
 footer {

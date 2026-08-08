@@ -1,3 +1,4 @@
+[![We Are Against ModDex](https://raw.githubusercontent.com/Po2432/Po2432/581feca0c3a9d12cd0d53d49fd0ab82230a1970b/anti-moddex-badge.svg)](https://po2432.github.io/Po2432/moddex.html#/badge)
 # About Me
 
 I'm a Minecraft modder and map maker.

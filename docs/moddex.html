@@ -11,37 +11,29 @@
     <!-- Header will be injected here -->
     <div id="header-placeholder"></div>
 
-    <main class="container" style="text-align: center; padding: 50px 20px;">
-        <!-- Vector Warning / Gone Icon -->
-        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger-red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
-        </svg>
+    <main class="container">
+        <h1>410 - Content Gone</h1>
+        
+        <div class="notice-box" style="border-left-color: var(--danger-red);">
+            <p><strong>Permanently Removed:</strong> The page or resource you are attempting to access has been permanently removed and will not return.</p>
+        </div>
 
-        <h1 style="font-size: 3rem; margin: 0 0 10px 0; color: var(--danger-red);">410 - Content Gone</h1>
-        <p style="font-size: 1.2rem; color: var(--text-color); max-width: 600px; margin: 0 auto 30px auto;">
-            The page or resource you are looking for has been <strong>permanently removed</strong> and is no longer available.
+        <h3>Why am I seeing this page?</h3>
+        <p>This URL previously hosted a page or project file that has been permanently retired. Unlike a 404 error where a file might be temporarily missing, a 410 status indicates that the resource has been intentionally and permanently removed.</p>
+
+        <h3>Where can I find active projects?</h3>
+        <p>If you were looking for mod downloads or updates, please visit my active CurseForge profile or return to the home page:</p>
+
+        <p style="margin-top: 25px;">
+            <a href="index.html" class="btn-back">Return Home</a>
+            <a href="https://www.curseforge.com/members/po2432/projects" target="_blank" class="btn-back" style="background: var(--banner-bg); margin-left: 10px;">Visit CurseForge Profile</a>
         </p>
-
-        <div class="notice-box" style="text-align: left; max-width: 600px; margin: 0 auto 30px auto;">
-            <p><strong>Looking for mods or project downloads?</strong></p>
-            <p>If you arrived here following an old link to a retired or archived mod, please check my active CurseForge profile for all current projects and updates.</p>
-        </div>
-
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <a href="index.html" class="banner-btn" style="background: var(--accent); color: #000 !important; padding: 10px 20px; font-size: 1rem;">
-                Return to Home Page
-            </a>
-            <a href="https://www.curseforge.com/members/po2432/projects" target="_blank" class="banner-btn" style="background: #333; color: #fff !important; padding: 10px 20px; font-size: 1rem;">
-                Visit CurseForge Profile
-            </a>
-        </div>
     </main>
 
     <!-- Footer will be injected here -->
     <div id="footer-placeholder"></div>
 
-    <!-- Script to load site header and footer -->
+    <!-- Script to load partials -->
     <script>
         async function loadPartials() {
             try {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found - Po2432</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header will be injected here -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        <h1>404 - Page Not Found</h1>
+        
+        <div class="notice-box">
+            <p><strong>Page Not Found:</strong> The requested URL could not be found on this server.</p>
+        </div>
+
+        <h3>What happened?</h3>
+        <p>The page you are looking for might have been moved, renamed, or is temporarily unavailable. It is also possible that there is a typo in the web address you entered.</p>
+
+        <h3>Where should I go?</h3>
+        <p>You can use the navigation menu above, return to the home page, or visit one of the main sections of the website:</p>
+
+        <ul>
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="modrinth.html">Modrinth Departure Notice</a></li>
+            <li><a href="moddex.html">Moddex.gg Protest Statement</a></li>
+            <li><a href="danger.html">Dangerous Mods & Servers List</a></li>
+            <li><a href="copyright.html">Copyright Infringement Log</a></li>
+        </ul>
+
+        <p style="margin-top: 25px;">
+            <a href="index.html" class="btn-back">Return Home</a>
+            <a href="https://www.curseforge.com/members/po2432/projects" target="_blank" class="btn-back" style="background: var(--banner-bg); margin-left: 10px;">Visit CurseForge Profile</a>
+        </p>
+    </main>
+
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Script to load partials -->
+    <script>
+        async function loadPartials() {
+            try {
+                const headerRes = await fetch('header.html');
+                document.getElementById('header-placeholder').innerHTML = await headerRes.text();
+                
+                const footerRes = await fetch('footer.html');
+                document.getElementById('footer-placeholder').innerHTML = await footerRes.text();
+            } catch (error) {
+                console.error("Error loading header/footer partials.", error);
+            }
+        }
+        loadPartials();
+    </script>
+</body>
+</html>
